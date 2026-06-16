@@ -1,0 +1,138 @@
+/* Self-hosted fonts (GDPR-safe, no external requests) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/inter-variable-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 400;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-variable-latin.woff2") format("woff2");
+}
+
+/* Display font: Fraunces — modern editorial serif (variable, optical sizing).
+   Self-hosted via @fontsource-variable/fraunces. To swap, change the @import
+   and update --font-display below. */
+@import "@fontsource-variable/fraunces";
+
+@import "tailwindcss";
+
+:root {
+  /* ── Paper / ink palette (debrieft.app) ── */
+  --paper: #f4f3ef;
+  --paper-alt: #ebe9e3;
+  --paper-deep: #e5e2d8;
+  --ink: #111110;
+  --ink-soft: #55544f;
+  --ink-faint: #6b6a65;
+  --rule: #111110;
+  --rule-soft: rgba(17, 17, 16, 0.14);
+  --ink-text-dim: #c9c8c2;
+
+  /* ── Single accent variable — change one hex to rebrand ── */
+  --accent: #ff8a1a;            /* placeholder (debrieft orange). Replace with your pick. */
+  --accent-soft: rgba(255, 138, 26, 0.18);
+
+  /* ── Typography ── */
+  --sans: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --serif: "Fraunces Variable", "Fraunces", Georgia, "Times New Roman", serif;
+  --font-display: var(--serif);
+  --font-body: var(--sans);
+  --font-mono: var(--mono);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+html {
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+  font-feature-settings: "cv11", "ss01", "ss03";
+}
+
+button, a, input, textarea, select, [role="button"] {
+  transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+
+::selection { background: var(--accent); color: var(--ink); }
+.dark-section ::selection {
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Swiss signature patterns (lifted from debrieft) ── */
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "opsz" 120, "SOFT" 40, "WONK" 0;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  color: var(--ink);
+}
+
+.mark {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 0 0.08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.rule-top { border-top: 1px solid var(--rule); }
+.rule-bottom { border-bottom: 1px solid var(--rule); }
+
+.dark-section {
+  background: var(--ink);
+  color: var(--paper);
+}
+.dark-section .rule-soft { border-color: rgba(255, 255, 255, 0.14); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(17,17,16,0.18); }
+::-webkit-scrollbar-thumb:hover { background: rgba(17,17,16,0.35); }
