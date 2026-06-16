@@ -34,8 +34,8 @@
   --ink-text-dim: #c9c8c2;
 
   /* ── Single accent variable — change one hex to rebrand ── */
-  --accent: #ff8a1a;            /* placeholder (debrieft orange). Replace with your pick. */
-  --accent-soft: rgba(255, 138, 26, 0.18);
+  --accent: #e84a2e;            /* vermilion red */
+  --accent-soft: rgba(232, 74, 46, 0.18);
 
   /* ── Typography ── */
   --sans: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
