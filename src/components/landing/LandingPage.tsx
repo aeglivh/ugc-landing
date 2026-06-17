@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { videos } from '../../data/videos';
-import { brands } from '../../data/brands';
 import { services, process as steps, niches } from '../../data/services';
 import VideoEmbed from './VideoEmbed';
 
-const SITE_NAME = 'Your Name';
+const SITE_NAME = 'Andrea Egli';
 const TAGLINE = 'Product video and UGC for B2B SaaS and AI tools.';
 const EMAIL = 'hello@example.com';
 
@@ -38,7 +37,6 @@ export default function LandingPage() {
       <Hero />
       <NichesStrip />
       <Portfolio />
-      <BrandsStrip />
       <Services />
       <Process />
       <About />
@@ -110,7 +108,7 @@ function Hero() {
             className="display"
             style={{ fontSize: 'clamp(44px, 9vw, 124px)', marginBottom: 24 }}
           >
-            Native video <span className="mark">that converts</span>, not ads that scroll past.
+            If your product takes 10 minutes to explain, I'll do it in <span className="mark">60 seconds</span>.
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.55, color: 'var(--ink-soft)', maxWidth: 540 }}>
             {TAGLINE}
@@ -200,9 +198,9 @@ function Portfolio() {
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '96px 24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', flexWrap: 'wrap', gap: 24, marginBottom: 48 }}>
           <div>
-            <p className="kicker" style={{ marginBottom: 12 }}>01 — Selected work</p>
+            <p className="kicker" style={{ marginBottom: 12 }}>01 / Selected work</p>
             <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>
-              Recent <span className="mark">videos</span>.
+              Recent <span className="mark">work</span>.
             </h2>
           </div>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -268,41 +266,12 @@ function FilterChip({ children, active, onClick }: { children: React.ReactNode; 
   );
 }
 
-/* ─────────────────────────  BRANDS STRIP  ───────────────────────── */
-function BrandsStrip() {
-  return (
-    <section className="dark-section" style={{ background: 'var(--ink)', color: 'var(--paper)' }}>
-      <div style={{ maxWidth: 1240, margin: '0 auto', padding: '64px 24px' }}>
-        <p className="kicker" style={{ color: 'var(--accent)', marginBottom: 24 }}>Brands I've worked with</p>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-            gap: 32,
-            alignItems: 'center',
-          }}
-        >
-          {brands.map((b) => (
-            <div key={b.name} style={{ textAlign: 'center' }}>
-              {b.logo ? (
-                <img src={b.logo} alt={b.name} style={{ maxHeight: 36, maxWidth: '100%', filter: 'invert(1) brightness(2)', opacity: 0.85 }} />
-              ) : (
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 18, color: 'var(--paper)', opacity: 0.85 }}>{b.name}</span>
-              )}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ─────────────────────────  SERVICES  ───────────────────────── */
 function Services() {
   return (
     <section id="services" style={{ borderBottom: '1px solid var(--rule)' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '96px 24px' }}>
-        <p className="kicker" style={{ marginBottom: 12 }}>02 — What I do</p>
+        <p className="kicker" style={{ marginBottom: 12 }}>02 / What I do</p>
         <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 56px)', marginBottom: 56 }}>
           Video <span className="mark">for every funnel stage</span>.
         </h2>
@@ -328,8 +297,7 @@ function Services() {
                 {String(i + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
               </p>
               <h3 style={{ fontSize: 22, fontWeight: 500, marginBottom: 12 }}>{s.title}</h3>
-              <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-soft)', marginBottom: 16 }}>{s.description}</p>
-              {s.price && <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink)' }}>{s.price}</p>}
+              <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--ink-soft)' }}>{s.description}</p>
             </article>
           ))}
         </div>
@@ -347,7 +315,7 @@ function Process() {
   return (
     <section style={{ borderBottom: '1px solid var(--rule)', background: 'var(--paper-alt)' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '96px 24px' }}>
-        <p className="kicker" style={{ marginBottom: 12 }}>03 — How it works</p>
+        <p className="kicker" style={{ marginBottom: 12 }}>03 / How it works</p>
         <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 56px)', marginBottom: 56 }}>
           Brief to delivery in <span className="mark">5 days</span>.
         </h2>
@@ -418,15 +386,15 @@ function About() {
           Photo of you
         </div>
         <div>
-          <p className="kicker" style={{ marginBottom: 12 }}>04 — About</p>
+          <p className="kicker" style={{ marginBottom: 12 }}>04 / About</p>
           <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 56px)', marginBottom: 32 }}>
-            I make video that <span className="mark">feels like a friend</span>.
+            I make complex products <span className="mark">easy to understand</span>.
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)', marginBottom: 20 }}>
-            Replace this with a short, honest bio. Where you're based, what kind of products you love filming, what makes your delivery sound natural instead of scripted.
+            I'm a certified web developer based in Vienna. I've spent years on camera explaining technical products, the kind brands struggle to make feel human on screen.
           </p>
           <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)' }}>
-            Two short paragraphs is plenty. Brands skim. Personality wins.
+            That means when you send me a brief, I actually understand what I'm filming. No 45-minute onboarding call. No scripts that sound like a features list. Just clear, natural video that makes your product click for the right buyer.
           </p>
         </div>
       </div>
@@ -440,7 +408,7 @@ function Rates() {
   return (
     <section id="rates" style={{ borderBottom: '1px solid var(--rule)', background: 'var(--paper-alt)' }}>
       <div style={{ maxWidth: 1240, margin: '0 auto', padding: '96px 24px' }}>
-        <p className="kicker" style={{ marginBottom: 12 }}>05 — Rates</p>
+        <p className="kicker" style={{ marginBottom: 12 }}>05 / Rates</p>
         <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 56px)', marginBottom: 48 }}>
           Simple <span className="mark">pricing</span>.
         </h2>
@@ -496,12 +464,12 @@ function Contact() {
         className="contact-grid"
       >
         <div>
-          <p className="kicker" style={{ marginBottom: 12 }}>06 — Book a shoot</p>
+          <p className="kicker" style={{ marginBottom: 12 }}>06 / Book a shoot</p>
           <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 64px)', color: 'var(--paper)' }}>
             Let's <span className="mark">make</span> something.
           </h2>
           <p style={{ marginTop: 24, fontSize: 17, lineHeight: 1.6, color: 'var(--ink-text-dim)', maxWidth: 420 }}>
-            Tell me about your product and the goal. I'll reply within 24h with a treatment and a quote.
+            Tell me about your product and what you need it to do. I'll reply within 24h with a treatment and a quote.
           </p>
           <p style={{ marginTop: 32, fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.12em', color: 'var(--ink-text-dim)' }}>
             Or email directly: <a href={`mailto:${EMAIL}`} style={{ color: 'var(--accent)' }}>{EMAIL}</a>
