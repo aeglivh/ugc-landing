@@ -16,6 +16,8 @@ export type Video = {
   url: string;
   /** Tile aspect ratio. Defaults to '9 / 16' (vertical UGC). Use '16 / 9' or '4 / 3' for landscape. */
   aspect?: '9 / 16' | '16 / 9' | '4 / 3' | '1 / 1';
+  /** Optional manual thumbnail. If omitted, auto-derived from Vimeo/YouTube. Path relative to /public, e.g. '/thumbnails/pingo.jpg'. */
+  thumbnail?: string;
   /** Optional one-line quote shown under the tile */
   quote?: string;
   /** Set true on a single video to feature it in the hero portfolio slot */
