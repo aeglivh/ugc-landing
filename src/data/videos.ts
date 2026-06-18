@@ -14,6 +14,8 @@ export type Video = {
   brand: string;
   niche: 'b2b-saas' | 'ai-tools';
   url: string;
+  /** Tile aspect ratio. Defaults to '9 / 16' (vertical UGC). Use '16 / 9' or '4 / 3' for landscape. */
+  aspect?: '9 / 16' | '16 / 9' | '4 / 3' | '1 / 1';
   /** Optional one-line quote shown under the tile */
   quote?: string;
   /** Set true on a single video to feature it in the hero portfolio slot */
@@ -28,6 +30,14 @@ export const videos: Video[] = [
     niche: 'ai-tools',
     url: 'https://vimeo.com/1202481284',
     featured: true,
+  },
+  {
+    id: 'anim-addons',
+    title: 'anim addons short',
+    brand: 'anim addons',
+    niche: 'ai-tools',
+    url: 'https://vimeo.com/1202485085',
+    aspect: '4 / 3',
   },
   {
     id: 'sample-2',

@@ -4,8 +4,8 @@ import { toEmbedUrl } from '../../lib/embed';
 type Props = {
   url: string;
   title: string;
-  /** '9 / 16' for vertical UGC, '16 / 9' for landscape */
-  aspect?: '9 / 16' | '16 / 9' | '1 / 1';
+  /** '9 / 16' for vertical UGC, '16 / 9' or '4 / 3' for landscape */
+  aspect?: '9 / 16' | '16 / 9' | '4 / 3' | '1 / 1';
 };
 
 export default function VideoEmbed({ url, title, aspect = '9 / 16' }: Props) {

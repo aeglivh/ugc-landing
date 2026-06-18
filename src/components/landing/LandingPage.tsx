@@ -119,7 +119,7 @@ function Hero() {
           </div>
         </div>
         <div>
-          {featured && <VideoEmbed url={featured.url} title={featured.title} aspect="9 / 16" />}
+          {featured && <VideoEmbed url={featured.url} title={featured.title} aspect={featured.aspect ?? '9 / 16'} />}
         </div>
       </div>
       <style>{`@media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr !important; } }`}</style>
@@ -225,7 +225,7 @@ function Portfolio() {
           >
             {filtered.map((v) => (
               <article key={v.id}>
-                <VideoEmbed url={v.url} title={v.title} aspect="9 / 16" />
+                <VideoEmbed url={v.url} title={v.title} aspect={v.aspect ?? '9 / 16'} />
                 <div style={{ paddingTop: 12 }}>
                   <p style={{ fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 4 }}>
                     {v.brand}
