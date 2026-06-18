@@ -22,11 +22,11 @@ export type Video = {
 
 export const videos: Video[] = [
   {
-    id: 'sample-1',
-    title: 'Replace me — featured reel',
-    brand: 'Your brand',
-    niche: 'b2b-saas',
-    url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    id: 'pingo-ai',
+    title: 'Pingo AI UGC',
+    brand: 'Pingo AI',
+    niche: 'ai-tools',
+    url: 'https://vimeo.com/1202481284',
     featured: true,
   },
   {
