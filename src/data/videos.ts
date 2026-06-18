@@ -12,7 +12,7 @@ export type Video = {
   id: string;
   title: string;
   brand: string;
-  niche: 'b2b-saas' | 'ai-tools';
+  niche: 'b2b-saas' | 'ai-tools' | 'fintech';
   url: string;
   /** Tile aspect ratio. Defaults to '9 / 16' (vertical UGC). Use '16 / 9' or '4 / 3' for landscape. */
   aspect?: '9 / 16' | '16 / 9' | '4 / 3' | '1 / 1';
@@ -54,7 +54,7 @@ export const videos: Video[] = [
     id: 'wise',
     title: 'Wise',
     brand: 'Wise',
-    niche: 'b2b-saas',
+    niche: 'fintech',
     url: 'https://www.tella.tv/video/vid_cmqjpl68o000m0bj9bqqf3pfz',
     thumbnail: '/thumbnails/wise.webp',
   },

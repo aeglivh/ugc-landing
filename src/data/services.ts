@@ -36,4 +36,5 @@ export type Niche = { label: string; value: string };
 export const niches: Niche[] = [
   { label: 'B2B SaaS', value: 'b2b-saas' },
   { label: 'AI Tools', value: 'ai-tools' },
+  { label: 'FinTech',  value: 'fintech' },
 ];
