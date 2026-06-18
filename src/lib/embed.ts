@@ -1,4 +1,6 @@
-function extractId(url: string): { id: string; provider: 'youtube' | 'vimeo' } | null {
+type Provider = 'youtube' | 'vimeo' | 'tella';
+
+function extractId(url: string): { id: string; provider: Provider } | null {
   try {
     const u = new URL(url);
     if (u.hostname.includes('youtube.com')) {
@@ -13,6 +15,13 @@ function extractId(url: string): { id: string; provider: 'youtube' | 'vimeo' } |
       const id = u.pathname.split('/').filter(Boolean)[0];
       if (id && /^\d+$/.test(id)) return { id, provider: 'vimeo' };
     }
+    if (u.hostname.includes('tella.tv')) {
+      // /video/vid_xxxxx[/embed]
+      const parts = u.pathname.split('/').filter(Boolean);
+      const idx = parts.indexOf('video');
+      const id = idx >= 0 ? parts[idx + 1] : undefined;
+      if (id) return { id, provider: 'tella' };
+    }
   } catch {
     /* fall through */
   }
@@ -20,15 +29,16 @@ function extractId(url: string): { id: string; provider: 'youtube' | 'vimeo' } |
 }
 
 /**
- * Convert a YouTube/Vimeo share URL into an iframe embed URL.
+ * Convert a video share URL into an iframe embed URL.
  * Returns null if the URL isn't recognised — caller can show a fallback.
  */
-export function toEmbedUrl(url: string): { src: string; provider: 'youtube' | 'vimeo' } | null {
+export function toEmbedUrl(url: string): { src: string; provider: Provider } | null {
   const parsed = extractId(url);
   if (!parsed) return null;
-  const src = parsed.provider === 'youtube'
-    ? `https://www.youtube-nocookie.com/embed/${parsed.id}`
-    : `https://player.vimeo.com/video/${parsed.id}`;
+  let src: string;
+  if (parsed.provider === 'youtube')      src = `https://www.youtube-nocookie.com/embed/${parsed.id}`;
+  else if (parsed.provider === 'vimeo')   src = `https://player.vimeo.com/video/${parsed.id}`;
+  else                                    src = `https://www.tella.tv/video/${parsed.id}/embed?b=1&title=0&a=1&loop=0&t=0&muted=0&wt=1&o=1`;
   return { src, provider: parsed.provider };
 }
 
@@ -36,12 +46,13 @@ export function toEmbedUrl(url: string): { src: string; provider: 'youtube' | 'v
  * Auto-derive a poster/thumbnail URL.
  * YouTube: official CDN (img.youtube.com).
  * Vimeo: vumbnail.com (free public service that resolves Vimeo IDs to thumbnails).
- * Returns null if URL isn't recognised — caller should show a fallback.
+ * Tella: signed/expiring URLs only — caller must provide a manual thumbnail path.
+ * Returns null if no auto-thumbnail is available.
  */
 export function toPosterUrl(url: string): string | null {
   const parsed = extractId(url);
   if (!parsed) return null;
-  return parsed.provider === 'youtube'
-    ? `https://img.youtube.com/vi/${parsed.id}/maxresdefault.jpg`
-    : `https://vumbnail.com/${parsed.id}_large.jpg`;
+  if (parsed.provider === 'youtube') return `https://img.youtube.com/vi/${parsed.id}/maxresdefault.jpg`;
+  if (parsed.provider === 'vimeo')   return `https://vumbnail.com/${parsed.id}_large.jpg`;
+  return null;
 }

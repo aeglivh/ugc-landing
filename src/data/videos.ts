@@ -36,10 +36,10 @@ export const videos: Video[] = [
   {
     id: 'anim-addons',
     title: 'anim addons short',
-    brand: 'anim addons',
-    niche: 'ai-tools',
-    url: 'https://vimeo.com/1202485085',
-    aspect: '4 / 3',
+    brand: 'Animation Add Ons',
+    niche: 'b2b-saas',
+    url: 'https://www.tella.tv/video/vid_cmqji7cw203pw04kzdq5n0h4c',
+    thumbnail: '/thumbnails/anim-addons.webp',
   },
   {
     id: 'sample-2',
