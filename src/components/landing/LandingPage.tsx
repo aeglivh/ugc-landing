@@ -9,7 +9,7 @@ const EMAIL = 'aegliaegli@gmail.com';
 
 /** Paste your Formspree endpoint here once you've created the form at https://formspree.io.
  *  Looks like 'https://formspree.io/f/xyzabc'. Leave empty to fall back to a mailto form. */
-const FORMSPREE_URL = '';
+const FORMSPREE_URL = 'https://formspree.io/f/mnjykpjd';
 
 export default function LandingPage() {
   // Lenis smooth scroll (respect reduced motion)
