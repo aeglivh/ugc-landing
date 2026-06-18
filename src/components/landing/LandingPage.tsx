@@ -5,7 +5,11 @@ import VideoEmbed from './VideoEmbed';
 
 const SITE_NAME = 'Andrea Egli';
 const TAGLINE = 'Product video and UGC for B2B SaaS and AI tools.';
-const EMAIL = 'hello@example.com';
+const EMAIL = 'aegliaegli@gmail.com';
+
+/** Paste your Formspree endpoint here once you've created the form at https://formspree.io.
+ *  Looks like 'https://formspree.io/f/xyzabc'. Leave empty to fall back to a mailto form. */
+const FORMSPREE_URL = '';
 
 export default function LandingPage() {
   // Lenis smooth scroll (respect reduced motion)
@@ -463,7 +467,7 @@ function Contact() {
             Let's <span className="mark">make</span> something.
           </h2>
           <p style={{ marginTop: 24, fontSize: 17, lineHeight: 1.6, color: 'var(--ink-text-dim)', maxWidth: 420 }}>
-            Tell me about your product and what you need it to do. I'll reply within 24h with a treatment and a quote.
+            Tell me about your product and what you need it to do. I'll get back to you within 24 hours.
           </p>
           <p style={{ marginTop: 32, fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.12em', color: 'var(--ink-text-dim)' }}>
             Or email directly: <a href={`mailto:${EMAIL}`} style={{ color: 'var(--accent)' }}>{EMAIL}</a>
@@ -477,20 +481,75 @@ function Contact() {
 }
 
 function ContactForm() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const hasFormspree = FORMSPREE_URL.length > 0;
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    if (!hasFormspree) return; // let the browser handle mailto natively
+    e.preventDefault();
+    setStatus('sending');
+    const form = e.currentTarget;
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      if (res.ok) {
+        setStatus('sent');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  if (status === 'sent') {
+    return (
+      <div style={{ padding: '32px 0', borderTop: '1px solid rgba(255,255,255,0.14)' }}>
+        <p className="kicker" style={{ color: 'var(--accent)', marginBottom: 12 }}>Brief received</p>
+        <p style={{ fontSize: 18, lineHeight: 1.55, color: 'var(--paper)' }}>
+          Thanks. I'll get back to you within 24 hours.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <form
-      action={`mailto:${EMAIL}`}
-      method="post"
-      encType="text/plain"
+      action={hasFormspree ? FORMSPREE_URL : `mailto:${EMAIL}`}
+      method="POST"
+      encType={hasFormspree ? undefined : 'text/plain'}
+      onSubmit={handleSubmit}
       style={{ display: 'grid', gap: 16 }}
     >
       <Field label="Your name" name="name" />
       <Field label="Brand / company" name="brand" />
       <Field label="Email" name="email" type="email" required />
       <Field label="What do you want to make?" name="message" textarea />
-      <button type="submit" style={{ ...btnPrimary, background: 'var(--accent)', color: 'var(--ink)', border: 0, marginTop: 8, justifySelf: 'start', cursor: 'pointer' }}>
-        Send brief →
+      <button
+        type="submit"
+        disabled={status === 'sending'}
+        style={{
+          ...btnPrimary,
+          background: 'var(--accent)',
+          color: 'var(--ink)',
+          border: 0,
+          marginTop: 8,
+          justifySelf: 'start',
+          cursor: status === 'sending' ? 'wait' : 'pointer',
+          opacity: status === 'sending' ? 0.6 : 1,
+        }}
+      >
+        {status === 'sending' ? 'Sending…' : 'Send brief →'}
       </button>
+      {status === 'error' && (
+        <p style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--accent)' }}>
+          Something went wrong. Email me directly at <a href={`mailto:${EMAIL}`} style={{ color: 'var(--accent)' }}>{EMAIL}</a>.
+        </p>
+      )}
     </form>
   );
 }

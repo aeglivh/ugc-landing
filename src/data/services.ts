@@ -25,7 +25,7 @@ export const services: Service[] = [
 export type Step = { number: string; title: string; description: string };
 
 export const process: Step[] = [
-  { number: '01', title: 'Brief',    description: 'You send the product + key points. I send back a shotlist and treatment within 24h.' },
+  { number: '01', title: 'Brief',    description: 'You send the product and key points. I get back to you within 24 hours.' },
   { number: '02', title: 'Concept',  description: 'We align on hook, structure, and CTAs. One round of revisions before we shoot.' },
   { number: '03', title: 'Shoot',    description: 'Filmed on iPhone 15 Pro with studio lighting. Natural delivery, scripted beats.' },
   { number: '04', title: 'Delivery', description: 'Edited 9:16 + 1:1 files delivered in 3 to 5 days. Two rounds of edits included.' },
