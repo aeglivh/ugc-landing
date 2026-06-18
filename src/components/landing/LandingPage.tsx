@@ -391,8 +391,20 @@ function About() {
           <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)', marginBottom: 20 }}>
             I'm a certified web developer based in Vienna. I've spent years on camera explaining technical products, the kind brands struggle to make feel human on screen.
           </p>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)' }}>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)', marginBottom: 20 }}>
             That means when you send me a brief, I actually understand what I'm filming. No 45-minute onboarding call. No scripts that sound like a features list. Just clear, natural video that makes your product click for the right buyer.
+          </p>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)' }}>
+            If you want to see my long-form content, you can check it out{' '}
+            <a
+              href="https://www.youtube.com/@andreaegli"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}
+            >
+              here
+            </a>
+            .
           </p>
         </div>
       </div>
