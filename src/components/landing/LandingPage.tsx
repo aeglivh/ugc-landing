@@ -122,7 +122,7 @@ function Hero() {
             <a href="#work" style={btnSecondary}>See the work</a>
           </div>
         </div>
-        <div style={{ maxWidth: 300, marginLeft: 'auto', width: '100%' }}>
+        <div style={{ maxWidth: 440, marginLeft: 'auto', width: '100%' }}>
           {featured && <VideoEmbed url={featured.url} title={featured.title} aspect={featured.aspect ?? '9 / 16'} poster={featured.thumbnail} />}
         </div>
       </div>
