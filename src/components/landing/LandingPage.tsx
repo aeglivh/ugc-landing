@@ -422,8 +422,8 @@ function Rates() {
           Simple <span className="mark">pricing</span>.
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
-          <RateCard title="Single video" price="€350" lines={['1 concept', '9:16 + 1:1 deliverables', '2 rounds of edits', '5-day turnaround']} />
-          <RateCard title="3-video bundle" price="€900" lines={['3 concepts', '9:16 + 1:1 deliverables', '2 rounds of edits each', '7-day turnaround']} highlight />
+          <RateCard title="Single video" price="€350" lines={['1 concept', '9:16 deliverables', '2 rounds of edits', '5-day turnaround']} />
+          <RateCard title="3-video bundle" price="€900" lines={['3 concepts', '9:16 deliverables', '2 rounds of edits each', '7-day turnaround']} highlight />
           <RateCard title="Custom" price="On request" lines={['Long-form, batch shoots', 'Whitelisted ads', 'Retainer pricing', 'Reply within 24h']} />
         </div>
       </div>
