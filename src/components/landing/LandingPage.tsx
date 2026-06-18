@@ -77,7 +77,7 @@ function Nav() {
         <a href="#top" style={{ fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink)', textDecoration: 'none' }}>
           {SITE_NAME}
         </a>
-        <nav style={{ display: 'flex', gap: 24, fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+        <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'flex-end', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
           <a href="#work" style={navLink}>Work</a>
           <a href="#services" style={navLink}>Services</a>
           <a href="#rates" style={navLink}>Rates</a>
@@ -122,7 +122,7 @@ function Hero() {
             <a href="#work" style={btnSecondary}>See the work</a>
           </div>
         </div>
-        <div style={{ maxWidth: 440, marginLeft: 'auto', width: '100%' }}>
+        <div style={{ maxWidth: 440, marginLeft: 'auto', marginRight: 'auto', width: '100%' }}>
           {featured && <VideoEmbed url={featured.url} title={featured.title} aspect={featured.aspect ?? '9 / 16'} poster={featured.thumbnail} />}
         </div>
       </div>
