@@ -110,7 +110,7 @@ function Hero() {
           <p className="kicker" style={{ marginBottom: 20 }}>UGC creator · Available for bookings</p>
           <h1
             className="display"
-            style={{ fontSize: 'clamp(44px, 9vw, 124px)', marginBottom: 24 }}
+            style={{ fontSize: 'clamp(36px, 5.5vw, 80px)', marginBottom: 24 }}
           >
             If your product takes 10 minutes to explain, I'll do it in <span className="mark">60 seconds</span>.
           </h1>
@@ -223,7 +223,7 @@ function Portfolio() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               gap: 24,
             }}
           >

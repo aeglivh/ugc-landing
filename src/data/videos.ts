@@ -43,19 +43,19 @@ export const videos: Video[] = [
     thumbnail: '/thumbnails/anim-addons.webp',
   },
   {
-    id: 'cloudways',
-    title: 'Cloudways Cloud Bootcamp',
-    brand: 'Cloudways',
-    niche: 'b2b-saas',
-    url: 'https://www.tella.tv/video/vid_cmqjiweoz00k504l54qwahzdt',
-    thumbnail: '/thumbnails/cloudways.webp',
-  },
-  {
     id: 'wise',
     title: 'Wise',
     brand: 'Wise',
     niche: 'fintech',
     url: 'https://www.tella.tv/video/vid_cmqjpl68o000m0bj9bqqf3pfz',
     thumbnail: '/thumbnails/wise.webp',
+  },
+  {
+    id: 'cloudways',
+    title: 'Cloudways Cloud Bootcamp',
+    brand: 'Cloudways',
+    niche: 'b2b-saas',
+    url: 'https://www.tella.tv/video/vid_cmqjiweoz00k504l54qwahzdt',
+    thumbnail: '/thumbnails/cloudways.webp',
   },
 ];
