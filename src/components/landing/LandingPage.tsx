@@ -370,19 +370,18 @@ function About() {
         }}
         className="about-grid"
       >
-        <div
+        <img
+          src="/andrea.jpg"
+          alt="Andrea Egli"
+          loading="lazy"
+          decoding="async"
           style={{
-            aspectRatio: '4 / 5',
-            background: 'var(--paper-deep)',
-            display: 'grid',
-            placeItems: 'center',
-            color: 'var(--ink-soft)',
-            fontFamily: 'var(--mono)',
-            fontSize: 12,
+            width: '100%',
+            aspectRatio: '3 / 4',
+            objectFit: 'cover',
+            display: 'block',
           }}
-        >
-          Photo of you
-        </div>
+        />
         <div>
           <p className="kicker" style={{ marginBottom: 12 }}>04 / About</p>
           <h2 className="display" style={{ fontSize: 'clamp(32px, 5vw, 56px)', marginBottom: 32 }}>
