@@ -50,4 +50,12 @@ export const videos: Video[] = [
     url: 'https://www.tella.tv/video/vid_cmqjiweoz00k504l54qwahzdt',
     thumbnail: '/thumbnails/cloudways.webp',
   },
+  {
+    id: 'wise',
+    title: 'Wise',
+    brand: 'Wise',
+    niche: 'b2b-saas',
+    url: 'https://www.tella.tv/video/vid_cmqjpl68o000m0bj9bqqf3pfz',
+    thumbnail: '/thumbnails/wise.webp',
+  },
 ];
