@@ -96,31 +96,37 @@ function Hero() {
     <section id="top" style={{ borderBottom: '1px solid var(--rule)' }}>
       <div
         style={{
-          maxWidth: 720,
+          maxWidth: 1240,
           margin: '0 auto',
-          padding: '40px 24px 56px',
+          padding: '88px 24px 64px',
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)',
+          gap: 48,
+          alignItems: 'end',
         }}
+        className="hero-grid"
       >
-        <p className="kicker" style={{ marginBottom: 20 }}>UGC creator · Available for bookings</p>
-        <h1
-          className="display"
-          style={{ fontSize: 'clamp(36px, 5.5vw, 80px)', marginBottom: 24 }}
-        >
-          If your product takes 10 minutes to explain, I'll do it in <span className="mark">60 seconds</span>.
-        </h1>
-        <p style={{ fontSize: 18, lineHeight: 1.55, color: 'var(--ink-soft)' }}>
-          {TAGLINE}
-        </p>
-        <div style={{ marginTop: 36, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-          <a href="#contact" style={btnPrimary}>Book a shoot</a>
-          <a href="#work" style={btnSecondary}>See the work</a>
-        </div>
-        {featured && (
-          <div style={{ marginTop: 48, maxWidth: 320, marginLeft: 'auto', marginRight: 'auto' }}>
-            <VideoEmbed url={featured.url} title={featured.title} aspect={featured.aspect ?? '9 / 16'} poster={featured.thumbnail} />
+        <div>
+          <p className="kicker" style={{ marginBottom: 20 }}>UGC creator · Available for bookings</p>
+          <h1
+            className="display"
+            style={{ fontSize: 'clamp(36px, 5.5vw, 80px)', marginBottom: 24 }}
+          >
+            If your product takes 10 minutes to explain, I'll do it in <span className="mark">60 seconds</span>.
+          </h1>
+          <p style={{ fontSize: 18, lineHeight: 1.55, color: 'var(--ink-soft)', maxWidth: 540 }}>
+            {TAGLINE}
+          </p>
+          <div style={{ marginTop: 36, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <a href="#contact" style={btnPrimary}>Book a shoot</a>
+            <a href="#work" style={btnSecondary}>See the work</a>
           </div>
-        )}
+        </div>
+        <div>
+          {featured && <VideoEmbed url={featured.url} title={featured.title} aspect={featured.aspect ?? '9 / 16'} poster={featured.thumbnail} />}
+        </div>
       </div>
+      <style>{`@media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr !important; } }`}</style>
     </section>
   );
 }
@@ -217,7 +223,7 @@ function Portfolio() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               gap: 24,
             }}
           >
