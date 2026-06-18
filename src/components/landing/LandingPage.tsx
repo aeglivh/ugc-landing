@@ -226,15 +226,9 @@ function Portfolio() {
             {filtered.map((v) => (
               <article key={v.id}>
                 <VideoEmbed url={v.url} title={v.title} aspect={v.aspect ?? '9 / 16'} poster={v.thumbnail} />
-                <div style={{ paddingTop: 12 }}>
-                  <p style={{ fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 4 }}>
-                    {v.brand}
-                  </p>
-                  <h3 style={{ fontSize: 16, fontWeight: 500, color: 'var(--ink)' }}>{v.title}</h3>
-                  {v.quote && (
-                    <p style={{ fontSize: 13, color: 'var(--ink-soft)', marginTop: 6, fontStyle: 'italic' }}>"{v.quote}"</p>
-                  )}
-                </div>
+                <p style={{ paddingTop: 12, fontFamily: 'var(--mono)', fontSize: 10.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--accent)' }}>
+                  {v.brand}
+                </p>
               </article>
             ))}
           </div>

@@ -30,7 +30,8 @@ export const videos: Video[] = [
     title: 'Pingo AI UGC',
     brand: 'Pingo AI',
     niche: 'ai-tools',
-    url: 'https://vimeo.com/1202481284',
+    url: 'https://www.tella.tv/video/vid_cmqjitm50007d04jxhyuf441q',
+    thumbnail: '/thumbnails/pingo-ai.webp',
     featured: true,
   },
   {
@@ -42,17 +43,11 @@ export const videos: Video[] = [
     thumbnail: '/thumbnails/anim-addons.webp',
   },
   {
-    id: 'sample-2',
-    title: 'AI tool walkthrough',
-    brand: 'Sample brand',
-    niche: 'ai-tools',
-    url: 'https://vimeo.com/76979871',
-  },
-  {
-    id: 'sample-3',
-    title: 'B2B SaaS explainer',
-    brand: 'Sample brand',
+    id: 'cloudways',
+    title: 'Cloudways Cloud Bootcamp',
+    brand: 'Cloudways',
     niche: 'b2b-saas',
-    url: 'https://vimeo.com/76979871',
+    url: 'https://www.tella.tv/video/vid_cmqjiweoz00k504l54qwahzdt',
+    thumbnail: '/thumbnails/cloudways.webp',
   },
 ];
