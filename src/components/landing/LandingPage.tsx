@@ -102,7 +102,7 @@ function Hero() {
           display: 'grid',
           gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)',
           gap: 48,
-          alignItems: 'end',
+          alignItems: 'center',
         }}
         className="hero-grid"
       >
@@ -122,7 +122,7 @@ function Hero() {
             <a href="#work" style={btnSecondary}>See the work</a>
           </div>
         </div>
-        <div>
+        <div style={{ maxWidth: 300, marginLeft: 'auto', width: '100%' }}>
           {featured && <VideoEmbed url={featured.url} title={featured.title} aspect={featured.aspect ?? '9 / 16'} poster={featured.thumbnail} />}
         </div>
       </div>
