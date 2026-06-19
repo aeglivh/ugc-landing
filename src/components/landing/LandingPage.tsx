@@ -3,7 +3,7 @@ import { videos } from '../../data/videos';
 import { services, process as steps, niches } from '../../data/services';
 import VideoEmbed from './VideoEmbed';
 
-const SITE_NAME = 'Andrea Egli';
+const SITE_NAME = 'Andrea Hehl';
 const TAGLINE = 'Product video and UGC for B2B SaaS and AI tools.';
 const EMAIL = 'aegliaegli@gmail.com';
 
@@ -479,7 +479,7 @@ function About() {
       >
         <img
           src="/andrea.jpg"
-          alt="Andrea Egli"
+          alt="Andrea Hehl"
           loading="lazy"
           decoding="async"
           style={{
