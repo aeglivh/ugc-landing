@@ -52,7 +52,23 @@ export default function LandingPage() {
 }
 
 /* ─────────────────────────  NAV  ───────────────────────── */
+const NAV_LINKS = [
+  { href: '#work',     label: 'Work' },
+  { href: '#services', label: 'Services' },
+  { href: '#rates',    label: 'Rates' },
+  { href: '#contact',  label: 'Contact' },
+];
+
 function Nav() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
   return (
     <header
       style={{
@@ -72,18 +88,109 @@ function Nav() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
+          gap: 16,
         }}
       >
-        <a href="#top" style={{ fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink)', textDecoration: 'none' }}>
+        <a
+          href="#top"
+          onClick={() => setOpen(false)}
+          style={{
+            fontFamily: 'var(--mono)',
+            fontSize: 12,
+            letterSpacing: '0.14em',
+            textTransform: 'uppercase',
+            color: 'var(--ink)',
+            textDecoration: 'none',
+            whiteSpace: 'nowrap',
+          }}
+        >
           {SITE_NAME}
         </a>
-        <nav style={{ display: 'flex', gap: 24, flexWrap: 'wrap', justifyContent: 'flex-end', fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-          <a href="#work" style={navLink}>Work</a>
-          <a href="#services" style={navLink}>Services</a>
-          <a href="#rates" style={navLink}>Rates</a>
-          <a href="#contact" style={navLink}>Contact</a>
+
+        <nav
+          className="nav-desktop"
+          style={{
+            display: 'flex',
+            gap: 24,
+            fontFamily: 'var(--mono)',
+            fontSize: 11,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+          }}
+        >
+          {NAV_LINKS.map((l) => (
+            <a key={l.href} href={l.href} style={navLink}>{l.label}</a>
+          ))}
         </nav>
+
+        <button
+          type="button"
+          className="nav-burger"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
+          onClick={() => setOpen((o) => !o)}
+          style={{
+            display: 'none',
+            background: 'transparent',
+            border: 0,
+            padding: 8,
+            margin: -8,
+            cursor: 'pointer',
+            color: 'var(--ink)',
+          }}
+        >
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
+            {open ? (
+              <>
+                <line x1="5" y1="5" x2="17" y2="17" />
+                <line x1="17" y1="5" x2="5" y2="17" />
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="7" x2="19" y2="7" />
+                <line x1="3" y1="15" x2="19" y2="15" />
+              </>
+            )}
+          </svg>
+        </button>
       </div>
+
+      {open && (
+        <div className="nav-dropdown" style={{ background: 'var(--paper)', borderTop: '1px solid var(--rule-soft)' }}>
+          <div style={{ maxWidth: 1240, margin: '0 auto', padding: '8px 24px 16px' }}>
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                style={{
+                  display: 'block',
+                  padding: '18px 0',
+                  fontFamily: 'var(--mono)',
+                  fontSize: 13,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--ink)',
+                  textDecoration: 'none',
+                  borderBottom: '1px solid var(--rule-soft)',
+                }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 720px) {
+          .nav-desktop { display: none !important; }
+          .nav-burger { display: inline-flex !important; }
+        }
+        @media (min-width: 721px) {
+          .nav-dropdown { display: none !important; }
+        }
+      `}</style>
     </header>
   );
 }
