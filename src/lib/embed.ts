@@ -38,7 +38,9 @@ export function toEmbedUrl(url: string): { src: string; provider: Provider } | n
   let src: string;
   if (parsed.provider === 'youtube')      src = `https://www.youtube-nocookie.com/embed/${parsed.id}`;
   else if (parsed.provider === 'vimeo')   src = `https://player.vimeo.com/video/${parsed.id}`;
-  else                                    src = `https://www.tella.tv/video/${parsed.id}/embed?b=0&title=0&a=1&loop=0&t=0&muted=0&wt=0&o=1`;
+  // Tella: a=0 disables autoplay so the player shows its own poster + play button
+  // (one click on our overlay loads it, one click in Tella plays with sound).
+  else                                    src = `https://www.tella.tv/video/${parsed.id}/embed?b=0&title=0&a=0&loop=0&t=0&muted=0&wt=0&o=1`;
   return { src, provider: parsed.provider };
 }
 

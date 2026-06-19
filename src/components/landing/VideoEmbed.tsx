@@ -39,7 +39,7 @@ export default function VideoEmbed({ url, title, aspect = '9 / 16', poster }: Pr
     <div style={{ position: 'relative', aspectRatio: aspect, background: 'var(--ink)', overflow: 'hidden' }}>
       {active ? (
         <iframe
-          src={`${embed.src}${embed.src.includes('?') ? '&' : '?'}autoplay=1`}
+          src={embed.src}
           title={title}
           allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
           allowFullScreen
