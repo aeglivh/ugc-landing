@@ -39,11 +39,12 @@ export default function VideoEmbed({ url, title, aspect = '9 / 16', poster }: Pr
     <div style={{ position: 'relative', aspectRatio: aspect, background: 'var(--ink)', overflow: 'hidden' }}>
       {active ? (
         <iframe
-          src={`${embed.src}?autoplay=1`}
+          src={`${embed.src}${embed.src.includes('?') ? '&' : '?'}autoplay=1`}
           title={title}
-          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
           allowFullScreen
           loading="lazy"
+          referrerPolicy="strict-origin-when-cross-origin"
           style={{ width: '100%', height: '100%', border: 0, display: 'block' }}
         />
       ) : (
